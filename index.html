@@ -32,7 +32,7 @@
         </div>
         <hr />
         <div class="list-group">
-          <div class="list-group-item" v-for="(comment, index) in comments">
+          <div class="list-group-item" v-for="(comment, index) in allComments">
             <span class="comment__author">
               Autor: <strong>{{comment.name}}</strong>
             </span>
@@ -59,7 +59,7 @@
       },
       methods: {
         addComment() {
-          if (this.name.trim() === '' || this.message.trim() === '') return;
+          if (this.message.trim() === '') return;
 
           this.comments.push({
             name: this.name,
@@ -71,6 +71,14 @@
         },
         removeComment(index) {
           this.comments.splice(index, 1)
+        }
+      },
+      computed: {
+        allComments() {
+          return this.comments.map(comment => ({
+            ...comment,
+            name: comment.name.trim() === '' ? 'Anônimo' : comment.name
+          }))
         }
       }
     })
