@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
-  <title>Comments list</title>
-</head>
-
-<body>
-  <div id="app"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-  <script>
-    new Vue({
-      el: '#app',
-      template: `
+<template>
       <div class="container">
         <h1>Comentários</h1>
         <hr />
@@ -32,7 +13,7 @@
         </div>
         <hr />
         <div class="list-group">
-          <div class="list-group-item" v-for="(comment, index) in allComments">
+          <div class="list-group-item" :key="index" v-for="(comment, index) in allComments">
             <span class="comment__author">
               Autor: <strong>{{comment.name}}</strong>
             </span>
@@ -43,9 +24,12 @@
           </div>
         </div>
         <hr />
-      </div>
-      `,
-      data() {
+      </div>  
+</template>
+
+<script>
+export default {
+   data() {
         return {
           comments: [
             {
@@ -81,8 +65,5 @@
           }))
         }
       }
-    })
-  </script>
-</body>
-
-</html>
+}
+</script>
