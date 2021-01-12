@@ -4,6 +4,7 @@
     <hr />
      <FormTodo v-on:add-todo="addComment" />
     <hr />
+    <p v-if="comments.length === 0">Sem comentários...</p>
     <div class="list-group">
       <div class="list-group-item" :key="index" v-for="(comment, index) in allComments">
         <span class="comment__author">
